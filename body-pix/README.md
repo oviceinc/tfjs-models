@@ -1,3 +1,50 @@
+# [ovice-core-client] Local development
+
+```bash
+cd tfjs-models/body-pix
+
+yarn link
+
+yarn dev # start compiler in watch mode
+
+cd /path/to/ovice-core-client
+
+yarn link @oviceinc/body-pix
+
+```
+### Please note
+```diff
+- yarn link simply creates a semantic link to this folder and npm in ovice-core-client node_modules but doesn't update package.json
+
+- package version needs to be updated manually in package.json
+```
+
+# Authenticating GitHub npm registery
+
+Tell npm where to find @oviceinc packages
+```bash
+$ npm login --scope=@oviceinc --registry=https://npm.pkg.github.com
+
+> Username: <your github username>
+> Password: <github PAT>
+> Email: <email>
+```
+
+Alternatively you can create a `.npmrc` file that holds PAT (need to do for every project that uses an @oviceinc package)
+
+```bash
+cd tfjs-models/body-pix
+
+sed "s/<token>/YOUR_TOKEN_HERE/" .npmrc.template > .npmrc
+```
+# Creating a new version
+
+```bash
+npm version [patch | minor | major | <version>]
+
+npm publish
+```
+
 # BodyPix - Person Segmentation in the Browser
 
 ## Note: We've just released Version 2.0 with **multi-person** support, a **new ResNet** model and API. Check out the new documentation below. For README of the previous 1.0 version, please look at the [README published on NPM](https://www.npmjs.com/package/@tensorflow-models/body-pix/v/1.1.2).
