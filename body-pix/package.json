@@ -1,5 +1,5 @@
 {
-  "name": "@tensorflow-models/body-pix",
+  "name": "@oviceinc/body-pix",
   "version": "2.2.0",
   "description": "Pretrained BodyPix model in TensorFlow.js",
   "main": "dist/index.js",
@@ -8,9 +8,10 @@
   "unpkg": "dist/body-pix.min.js",
   "jsdelivr": "dist/body-pix.min.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tensorflow/tfjs-models.git"
+    "url": "https://github.com/oviceinc/tfjs-models.git"
   },
   "peerDependencies": {
     "@tensorflow/tfjs-backend-webgl": "^3.6.0",
@@ -43,12 +44,14 @@
     "yalc": "^1.0.0-pre.27"
   },
   "scripts": {
+    "dev": "rollup -c -w",
     "build": "rimraf dist && tsc",
     "publish-local": "yarn build && rollup -c && yalc publish",
     "test": "karma start",
     "test-ci": "karma start --singleRun --browsers=bs_chrome_mac",
     "build-npm": "yarn build && rollup -c",
-    "lint": "tslint -p . -t verbose"
+    "lint": "tslint -p . -t verbose",
+    "prepublishOnly": "yarn build-npm"
   },
   "license": "Apache-2.0",
   "dependencies": {}
